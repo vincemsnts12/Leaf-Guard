@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeafGuard | Professional Diagnosis</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="brand">
+            <i class="fa-solid fa-leaf"></i> LeafGuard
+        </div>
+        <div class="nav-subtitle">
+            Potato Disease Classification System
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Left Column: Input -->
+        <div class="card">
+            <h2 class="card-title">Upload Image</h2>
+            
+            <input type="file" id="fileInput" accept="image/*" hidden>
+            
+            <!-- Modified Upload Area Structure -->
+            <div class="upload-area" id="dropZone">
+                <!-- Instructions State -->
+                <div id="uploadInstructions">
+                    <i class="fa-solid fa-cloud-arrow-up icon-upload"></i>
+                    <h3>Click to Upload</h3>
+                    <p class="text-sub">or drag and drop image here</p>
+                    <p class="file-hint">Supports JPG, PNG</p>
+                </div>
+
+                <!-- Image Preview State (Initially Hidden) -->
+                <div class="preview-container" id="previewContainer" style="display: none;">
+                    <img src="" id="previewImg" class="preview-img" alt="Leaf Preview">
+                </div>
+            </div>
+
+            <button class="btn-analyze" id="analyzeBtn" disabled>
+                <span>Run Analysis</span>
+            </button>
+
+            <!-- Reset Button (Hidden by default) -->
+            <button class="btn-secondary" id="cancelBtn" style="display: none;">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                <span>Reset</span>
+            </button>
+        </div>
+
+        <!-- Right Column: Results -->
+        <div class="card relative-card">
+            <div class="results-header">
+                <h2 class="card-title">Diagnostic Report</h2>
+                <div id="statusIndicator" class="status-badge">
+                    <i class="fa-solid fa-circle-question"></i> Waiting for input...
+                </div>
+            </div>
+
+            <div id="resultContent" class="blur-content">
+                <p class="label-top">Top Diagnosis</p>
+                <h1 class="diagnosis-main" id="diseaseName">--</h1>
+                <p class="desc-text">
+                    The AI model analyzes the visual patterns of the leaf to classify its health condition.
+                </p>
+
+                <div class="confidence-section">
+                    <div class="meter-label">
+                        <span>AI Confidence Score</span>
+                        <span id="confidenceText">0%</span>
+                    </div>
+                    <div class="meter-bg">
+                        <div class="meter-fill" id="confidenceBar"></div>
+                    </div>
+                    <p class="validation-wrapper">
+                        <i class="fa-solid fa-shield-halved"></i> 
+                        <span id="validationText">Pending Validation...</span>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Instructions/Empty State -->
+             <div id="emptyState" class="empty-state">
+                <i class="fa-solid fa-microscope empty-icon"></i>
+                <p class="text-sub">Upload an image to see results</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
